@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734cd59def955364b850923105784ea8, type: 3}
   m_Name: PanelTextureTable
   m_EditorClassIdentifier: 
-  <RightTexture>k__BackingField: {fileID: 0}
-  <DownRightTexture>k__BackingField: {fileID: 0}
-  <LeftRightTexture>k__BackingField: {fileID: 0}
-  <LeftDownRightTexture>k__BackingField: {fileID: 0}
+  <BlockTexture>k__BackingField: {fileID: 21300000, guid: 1e78a436db6dfd84d996a774d7794878, type: 3}
+  <RightTexture>k__BackingField: {fileID: 21300000, guid: e2d9a7537eb79cc448298bdd4004fa7a, type: 3}
+  <DownTexture>k__BackingField: {fileID: 21300000, guid: 42f48ecd32deaff4b903bac5fadef8b9, type: 3}
+  <LeftTexture>k__BackingField: {fileID: 21300000, guid: 5c96e468891126449a4ef52b5fa1cd92, type: 3}
+  <UpTexture>k__BackingField: {fileID: 21300000, guid: 38bea7e19c3a20944a99a838ad3794dc, type: 3}
+  <DownRightTexture>k__BackingField: {fileID: 21300000, guid: bd8cd6fd6fb555a45a9a8bdcc284bb6a, type: 3}
+  <LeftDownTexture>k__BackingField: {fileID: 21300000, guid: b75a26b6a089c3340b0c6fa5315a96e0, type: 3}
+  <UpLeftTexture>k__BackingField: {fileID: 21300000, guid: d58a947befe392849a2c8137d820c2d6, type: 3}
+  <UpRightTexture>k__BackingField: {fileID: 21300000, guid: 4b63e5560fad8bc4eab8ea22a2dd67b0, type: 3}
+  <LeftRightTexture>k__BackingField: {fileID: 21300000, guid: b390b58c8d17e564bb323d233cac4436, type: 3}
+  <UpDownTexture>k__BackingField: {fileID: 21300000, guid: 42ee2d6f15a8bdb47a82bf64c2ef4171, type: 3}
