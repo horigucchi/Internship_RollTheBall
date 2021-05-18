@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // スワイプを検出する
-    private IEnumerator trySwaipe()
+    private IEnumerator trySwiping()
     {
         // 初期位置
         Vector3 firstPosition = getFingerPosition();
@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            StartCoroutine(trySwaipe());
+            StartCoroutine(trySwiping());
         }
     }
 }
