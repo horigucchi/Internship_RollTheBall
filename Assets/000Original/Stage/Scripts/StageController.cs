@@ -1,25 +1,25 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StageController : MonoBehaviour
 {
     /// <summary>
-    /// ƒXƒe[ƒW‚Ì•
+    /// ã‚¹ãƒ†ãƒ¼ã‚¸ã®å¹…
     /// </summary>
     public const int WIDTH = 4;
     /// <summary>
-    /// ƒXƒe[ƒW‚Ì‚‚³
+    /// ã‚¹ãƒ†ãƒ¼ã‚¸ã®é«˜ã•
     /// </summary>
     public const int HEIGHT = 4;
 
     [SerializeField]
     private GameObject[] panels = new GameObject[WIDTH * HEIGHT];
 
-    // ŠÇ—‚·‚éƒXƒe[ƒWã‚Ìƒpƒlƒ‹ƒRƒ“ƒgƒ[ƒ‰[
+    // ç®¡ç†ã™ã‚‹ã‚¹ãƒ†ãƒ¼ã‚¸ä¸Šã®ãƒ‘ãƒãƒ«ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼
     private PanelController[,] panelControllers = new PanelController[HEIGHT, WIDTH];
 
-    // ƒpƒlƒ‹ƒRƒ“ƒgƒ[ƒ‰[‚Ì‰Šú‰»
+    // ãƒ‘ãƒãƒ«ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼ã®åˆæœŸåŒ–
     private void initializePanelObjects()
     {
         for (int j = 0; j < HEIGHT; j++)
@@ -38,7 +38,7 @@ public class StageController : MonoBehaviour
         initializePanelObjects();
     }
 
-    // ˜g‚Ì”ÍˆÍŠO‚©
+    // æ ã®ç¯„å›²å¤–ã‹
     private bool isOutOfRange(int x, int y)
     {
         if (x < 0 || WIDTH <= x) return true;
@@ -51,7 +51,7 @@ public class StageController : MonoBehaviour
         if (isOutOfRange(x, y)) return;
         if (panelControllers[y, x] == null) return;
 
-        // ˆÚ“®—Ê
+        // ç§»å‹•é‡
         int dx = 0;
         int dy = 0;
         
@@ -60,15 +60,15 @@ public class StageController : MonoBehaviour
         if ((way & WayPattern.Right) != 0) dx += 1;
         if ((way & WayPattern.Left) != 0) dx -= 1;
 
-        // ˆÚ“®æ”z—ñÀ•W
+        // ç§»å‹•å…ˆé…åˆ—åº§æ¨™
         int indexX = x + dx;
         int indexY = y + dy;
 
         if (isOutOfRange(indexX, indexY)) return;
-        // ˆÚ“®æ‚É‚·‚Å‚É’u‚¢‚Ä‚ ‚éê‡’†’f
+        // ç§»å‹•å…ˆã«ã™ã§ã«ç½®ã„ã¦ã‚ã‚‹å ´åˆä¸­æ–­
         if (panelControllers[indexY, indexX] != null) return;
 
-        // “ü‚ê‘Ö‚¦
+        // å…¥ã‚Œæ›¿ãˆ
         System.Action swap = () =>
         {
             var temp = panelControllers[indexY, indexX];
@@ -76,7 +76,7 @@ public class StageController : MonoBehaviour
             panelControllers[y, x] = temp;
         };
 
-        // ˆÚ“®‚ÌÀs
+        // ç§»å‹•ã®å®Ÿè¡Œ
         panelControllers[y, x]?.Move(way, swap);
     }
 

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,10 +20,10 @@ public class PanelObject : MonoBehaviour
     }
 
     /// <summary>
-    /// w’è‚Ì•ûŒü‚ÉˆÚ“®
+    /// æŒ‡å®šã®æ–¹å‘ã«ç§»å‹•
     /// </summary>
-    /// <param name="direction">ˆÚ“®‚·‚é•ûŒü</param>
-    /// <param name="callback">ˆÚ“®I—¹‚Ì’Ê’m</param>
+    /// <param name="direction">ç§»å‹•ã™ã‚‹æ–¹å‘</param>
+    /// <param name="callback">ç§»å‹•çµ‚äº†ã®é€šçŸ¥</param>
     /// <returns></returns>
     public IEnumerator TryMoving(Vector3 direction, System.Action callback = null)
     {

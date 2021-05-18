@@ -1,4 +1,4 @@
-public enum WayPattern
+﻿public enum WayPattern
 {
     None = 0b0000,
     Right = 0b0001,

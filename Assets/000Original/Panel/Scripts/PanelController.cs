@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +9,7 @@ public class PanelController : MonoBehaviour
     [SerializeField]
     PanelTextureTable textureTable;
 
-    // ˆÚ“®’†‚Å‚ ‚é‚©
+    // ç§»å‹•ä¸­ã§ã‚ã‚‹ã‹
     private bool isMoving = false;
 
 
@@ -25,10 +25,10 @@ public class PanelController : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒpƒlƒ‹‚ğˆÚ“®‚³‚¹‚é
+    /// ãƒ‘ãƒãƒ«ã‚’ç§»å‹•ã•ã›ã‚‹
     /// </summary>
-    /// <param name="way">ˆÚ“®‚·‚é•ûŒü</param>
-    /// <param name="callback">ˆÚ“®I—¹‚Ì’Ê’m</param>
+    /// <param name="way">ç§»å‹•ã™ã‚‹æ–¹å‘</param>
+    /// <param name="callback">ç§»å‹•çµ‚äº†ã®é€šçŸ¥</param>
     public void Move(WayPattern way, System.Action callback = null)
     {
         Vector3 direction = Vector3.zero;

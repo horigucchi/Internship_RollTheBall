@@ -1,14 +1,14 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // ƒ^ƒbƒ`‚µ‚½À•WŒvZ‚Ég‚¤ƒJƒƒ‰
+    // ã‚¿ãƒƒãƒã—ãŸåº§æ¨™è¨ˆç®—ã«ä½¿ã†ã‚«ãƒ¡ãƒ©
     private Camera mainCamera;
 
     /// <summary>
-    /// ƒXƒƒCƒv‚ÉŒÄ‚Î‚ê‚éiƒXƒƒCƒv‚µ‚½•ûŒüj
+    /// ã‚¹ãƒ¯ã‚¤ãƒ—æ™‚ã«å‘¼ã°ã‚Œã‚‹ï¼ˆã‚¹ãƒ¯ã‚¤ãƒ—ã—ãŸæ–¹å‘ï¼‰
     /// </summary>
     public event System.Action<WayPattern> Swiped;
 
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
         mainCamera = Camera.main;
     }
 
-    // w‚ÌÀ•W‚ğƒQ[ƒ€‹óŠÔÀ•W‚Åæ“¾
+    // æŒ‡ã®åº§æ¨™ã‚’ã‚²ãƒ¼ãƒ ç©ºé–“åº§æ¨™ã§å–å¾—
     private Vector3 getFingerPosition()
     {
         //return Input.GetTouch(0).position;
@@ -26,45 +26,45 @@ public class PlayerController : MonoBehaviour
         return mainCamera.ScreenToWorldPoint(screenPosition);
     }
 
-    // Šp“x‚©‚çÛŒÀ‚ğæ“¾
+    // è§’åº¦ã‹ã‚‰è±¡é™ã‚’å–å¾—
     private int getQuadrant(float angle)
     {
         return (Mathf.FloorToInt((angle + 360 - 45) / 90) + 1) % 4 + 1;
     }
 
-    // ÛŒÀ‚©‚ç•ûŒü‚ğæ“¾
+    // è±¡é™ã‹ã‚‰æ–¹å‘ã‚’å–å¾—
     private WayPattern getSwipeWay(int quadrant)
     {
         int n = quadrant - 1;
         return (WayPattern)((0b00010001 >> n) & 0b1111);
     }
 
-    // ƒXƒƒCƒv‚ğŒŸo‚·‚é
+    // ã‚¹ãƒ¯ã‚¤ãƒ—ã‚’æ¤œå‡ºã™ã‚‹
     private IEnumerator trySwiping()
     {
-        // ‰ŠúˆÊ’u
+        // åˆæœŸä½ç½®
         Vector3 firstPosition = getFingerPosition();
 
         yield return null;
         Vector3 vector;
         
-        // ˆê’è”ÍˆÍ“®‚­‚Ü‚Åƒ‹[ƒv
+        // ä¸€å®šç¯„å›²å‹•ãã¾ã§ãƒ«ãƒ¼ãƒ—
         while (true)
         {
-            // w‚ğ—£‚µ‚½‚ç’†~
+            // æŒ‡ã‚’é›¢ã—ãŸã‚‰ä¸­æ­¢
             if (Input.GetMouseButtonUp(0)) yield break;
 
             Vector3 position = getFingerPosition();
             vector = position - firstPosition;
             
-            // ˆê’è”ÍˆÍŠO‚È‚çŒŸo
+            // ä¸€å®šç¯„å›²å¤–ãªã‚‰æ¤œå‡º
             const float RANGE = 0.5f;
             if (vector.sqrMagnitude > RANGE * RANGE) break;
 
             yield return null;
         }
 
-        // w‚Ì‚¸‚ê‚©‚çŠp“x‚ğZo
+        // æŒ‡ã®ãšã‚Œã‹ã‚‰è§’åº¦ã‚’ç®—å‡º
         float angle = Mathf.Atan2(vector.y, vector.x) * Mathf.Rad2Deg;
         WayPattern pattern = getSwipeWay(getQuadrant(angle));
         Swiped?.Invoke(pattern);
