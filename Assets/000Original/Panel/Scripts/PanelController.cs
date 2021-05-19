@@ -56,6 +56,8 @@ public class PanelController : MonoBehaviour
     /// <param name="callback">移動終了の通知</param>
     public void Move(WayPattern way, System.Action callback = null)
     {
+        if (!CanMove) return;
+
         Vector2Int direction = Vector2Int.zero;
         if ((way & WayPattern.Right) != 0) direction += Vector2Int.right;
         if ((way & WayPattern.Down) != 0) direction += Vector2Int.down;
