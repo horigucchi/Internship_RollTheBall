@@ -108,6 +108,7 @@ public class RouteSearcher
     {
         runSearching(startIndex);
         route = connectionRoute;
+        if (route.Count < 1) return false;
         route.Reverse();
         return true;
     }
