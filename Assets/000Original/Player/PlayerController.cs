@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// スワイプ時に呼ばれる（スワイプした方向）
     /// </summary>
-    public event System.Action<WayPattern> Swiped;
+    public event System.Action<Vector3, WayPattern> Swiped;
 
     private void Awake()
     {
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         // 指のずれから角度を算出
         float angle = Mathf.Atan2(vector.y, vector.x) * Mathf.Rad2Deg;
         WayPattern pattern = getSwipeWay(getQuadrant(angle));
-        Swiped?.Invoke(pattern);
+        Swiped?.Invoke(firstPosition, pattern);
     }
 
     private void Update()
