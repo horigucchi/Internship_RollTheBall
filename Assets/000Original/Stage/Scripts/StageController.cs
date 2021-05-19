@@ -35,9 +35,17 @@ public class StageController : MonoBehaviour
         }
     }
 
+    public void SetStage(List<PanelController> list)
+    {
+        foreach (var item in list)
+        {
+            panelControllers[item.Data.y, item.Data.x] = item;
+        }
+    }
+
     private void Awake()
     {
-        initializePanelObjects();
+        //initializePanelObjects();
     }
 
     // 枠の範囲外か

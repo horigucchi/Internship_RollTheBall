@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class PanelController : MonoBehaviour
 {
+    public PanelData Data { get; private set; }
+
     public PanelObject PanelObject { get; private set; }
 
     public BallController BallController { get; private set; }
 
-    [field: SerializeField]
-    public WayPattern WayPattern { get; private set; }
 
-    [field: SerializeField]
-    public bool IsHavingBall { get; private set; }
+    public WayPattern WayPattern { get => Data.Way; }
 
-    [field: SerializeField]
-    public bool IsEndPoint { get; private set; }
+    public bool IsHavingBall { get => Data.IsHavingBall; }
 
-    [field: SerializeField]
-    public bool CanMove { get; private set; }
+    public bool IsEndPoint { get => Data.IsEndPoint; }
+
+    public bool CanMove { get => Data.CanMove; }
 
     [SerializeField]
     PanelTextureTable textureTable;
@@ -32,9 +31,17 @@ public class PanelController : MonoBehaviour
         PanelObject = GetComponent<PanelObject>();
     }
 
-    private void setParameter()
+    public void SetParameter(PanelData data, PanelTextureTable textureTable)
     {
-        CanMove = true;
+        Data = data;
+        this.textureTable = textureTable;
+        {
+            Vector3 position = Vector3.zero;
+            position.x = data.x - (StageController.WIDTH - 1) / 2f;
+            position.y = -data.y + (StageController.HEIGHT - 1) / 2f;
+            transform.position = position;
+        }
+        initialize();
     }
 
     private void Start()
@@ -44,7 +51,6 @@ public class PanelController : MonoBehaviour
 
     private void initialize()
     {
-        setParameter();
         Sprite sprite = textureTable.GetSprite(WayPattern);
         PanelObject.SetSprite(sprite);
     }

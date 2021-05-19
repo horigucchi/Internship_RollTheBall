@@ -12,11 +12,15 @@ public class GameplayManager : SingletonMonoBehaviour<GameplayManager>
 
     public PlayerController PlayerController { get; private set; }
     public StageController StageController { get; private set; }
+    public PanelGenerator PanelGenerator { get; private set; }
 
     public BallGenerator BallGenerator { get; private set; }
 
     public GameplayUXController UXController { get; private set; }
 
+
+    [SerializeField]
+    private StageDataObject stageDataObject;
 
     private RouteSearcher routeSearcher;
 
@@ -25,6 +29,7 @@ public class GameplayManager : SingletonMonoBehaviour<GameplayManager>
         PlayerController = FindObjectOfType<PlayerController>();
         StageController = FindObjectOfType<StageController>();
         BallGenerator = FindObjectOfType<BallGenerator>();
+        PanelGenerator = FindObjectOfType<PanelGenerator>();
 
         UXController = FindObjectOfType<GameplayUXController>();
     }
@@ -39,6 +44,10 @@ public class GameplayManager : SingletonMonoBehaviour<GameplayManager>
 
     private void Start()
     {
+        List<PanelController> list = PanelGenerator.Generate(stageDataObject);
+        StageController.SetStage(list);
+
+
         PlayerController.Swiped += onSwiped;
         StageController.PanelMoved += () =>
         {
