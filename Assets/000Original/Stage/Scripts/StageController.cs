@@ -95,6 +95,7 @@ public class StageController : MonoBehaviour
 
     public PanelController GetPanelController(int indexX, int indexY)
     {
+        if (IsOutOfRange(indexX, indexY)) return null;
         return panelControllers[indexY, indexX];
     }
 
