@@ -15,6 +15,9 @@ public class GameplayManager : SingletonMonoBehaviour<GameplayManager>
 
     public BallGenerator BallGenerator { get; private set; }
 
+    public GameplayUXController UXController { get; private set; }
+
+
     private RouteSearcher routeSearcher;
 
     private void attachComponent()
@@ -22,6 +25,8 @@ public class GameplayManager : SingletonMonoBehaviour<GameplayManager>
         PlayerController = FindObjectOfType<PlayerController>();
         StageController = FindObjectOfType<StageController>();
         BallGenerator = FindObjectOfType<BallGenerator>();
+
+        UXController = FindObjectOfType<GameplayUXController>();
     }
 
     protected override void Awake()
@@ -53,6 +58,11 @@ public class GameplayManager : SingletonMonoBehaviour<GameplayManager>
         var startPoint = StageController.GetStartPoint();
         var ball = BallGenerator.GetClone();
         StageController.GetPanelController(startPoint.x, startPoint.y).SetBall(ball);
+
+        Completed += () =>
+        {
+            UXController.PlayClear();
+        };
 
     }
 
