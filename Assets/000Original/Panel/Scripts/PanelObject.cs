@@ -6,9 +6,6 @@ public class PanelObject : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
 
-    [field: SerializeField]
-    public WayPattern WayPattern { get; private set; }
-
     private void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();

@@ -6,6 +6,16 @@ public class PanelController : MonoBehaviour
 {
     public PanelObject PanelObject { get; private set; }
 
+    [field: SerializeField]
+    public WayPattern WayPattern { get; private set; }
+
+    public bool IsHavingBall { get; private set; }
+
+    [field: SerializeField]
+    public bool IsEndPoint { get; private set; }
+
+    public bool CanMove { get; private set; }
+
     [SerializeField]
     PanelTextureTable textureTable;
 
@@ -18,9 +28,21 @@ public class PanelController : MonoBehaviour
         PanelObject = GetComponent<PanelObject>();
     }
 
+    private void setParameter()
+    {
+        IsHavingBall = false;
+        CanMove = true;
+    }
+
     private void Start()
     {
-        Sprite sprite = textureTable.GetSprite(PanelObject.WayPattern);
+        initialize();
+    }
+
+    private void initialize()
+    {
+        setParameter();
+        Sprite sprite = textureTable.GetSprite(WayPattern);
         PanelObject.SetSprite(sprite);
     }
 
