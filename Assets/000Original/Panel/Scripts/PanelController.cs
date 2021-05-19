@@ -6,14 +6,18 @@ public class PanelController : MonoBehaviour
 {
     public PanelObject PanelObject { get; private set; }
 
+    public BallController BallController { get; private set; }
+
     [field: SerializeField]
     public WayPattern WayPattern { get; private set; }
 
+    [field: SerializeField]
     public bool IsHavingBall { get; private set; }
 
     [field: SerializeField]
     public bool IsEndPoint { get; private set; }
 
+    [field: SerializeField]
     public bool CanMove { get; private set; }
 
     [SerializeField]
@@ -30,7 +34,6 @@ public class PanelController : MonoBehaviour
 
     private void setParameter()
     {
-        IsHavingBall = false;
         CanMove = true;
     }
 
@@ -66,6 +69,10 @@ public class PanelController : MonoBehaviour
         StartCoroutine(PanelObject.TryMoving(direction, callback));
     }
 
-
+    public void SetBall(BallController ball)
+    {
+        BallController = ball;
+        ball.transform.position = transform.position;
+    }
 
 }
