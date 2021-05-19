@@ -25,10 +25,10 @@ public class PanelObject : MonoBehaviour
     /// <param name="direction">移動する方向</param>
     /// <param name="callback">移動終了の通知</param>
     /// <returns></returns>
-    public IEnumerator TryMoving(Vector3 direction, System.Action callback = null)
+    public IEnumerator TryMoving(Vector2Int direction, System.Action callback = null)
     {
         Vector3 firstPosition = transform.position;
-        Vector3 targetPosition = transform.position + direction;
+        Vector3 targetPosition = transform.position + new Vector3(direction.x, direction.y);
 
         const float SPEED = 2f;
         float t = 0;
