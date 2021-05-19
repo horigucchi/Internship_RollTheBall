@@ -158,4 +158,21 @@ public class StageController : MonoBehaviour
         return SwipePanel(index.x, index.y, way);
     }
 
+
+    public Vector2Int GetStartPoint()
+    {
+        for (int j = 0; j < HEIGHT; j++)
+        {
+            for (int i = 0; i < WIDTH; i++)
+            {
+                var panel = panelControllers[j, i];
+                if (panel == null) continue;
+                if(panel.IsHavingBall)
+                {
+                    return new Vector2Int(i, j);
+                }
+            }
+        }
+        return new Vector2Int(-1, -1);
+    }
 }
