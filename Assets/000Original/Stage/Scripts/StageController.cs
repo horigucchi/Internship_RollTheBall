@@ -19,6 +19,8 @@ public class StageController : MonoBehaviour
     // 管理するステージ上のパネルコントローラー
     private PanelController[,] panelControllers = new PanelController[HEIGHT, WIDTH];
 
+    public event System.Action PanelMoved = null;
+
     // パネルコントローラーの初期化
     private void initializePanelObjects()
     {
@@ -39,7 +41,7 @@ public class StageController : MonoBehaviour
     }
 
     // 枠の範囲外か
-    private bool isOutOfRange(int x, int y)
+    public bool IsOutOfRange(int x, int y)
     {
         if (x < 0 || WIDTH <= x) return true;
         if (y < 0 || HEIGHT <= y) return true;
@@ -106,7 +108,7 @@ public class StageController : MonoBehaviour
     public bool SwipePanel(int indexX, int indexY, WayPattern way)
     {
         if ((way & WayPattern.UpLeftDownRight) == 0) return false;
-        if (isOutOfRange(indexX, indexY)) return false;
+        if (IsOutOfRange(indexX, indexY)) return false;
         if (panelControllers[indexY, indexX] == null) return false;
 
         // 移動量
@@ -122,22 +124,24 @@ public class StageController : MonoBehaviour
         int targetIndexX = indexX + dx;
         int targetIndexY = indexY + dy;
 
-        if (isOutOfRange(targetIndexX, targetIndexY)) return false;
+        if (IsOutOfRange(targetIndexX, targetIndexY)) return false;
         // 移動先にすでに置いてある場合中断
         if (panelControllers[targetIndexY, targetIndexX] != null) return false;
 
+        System.Action callback = null;
 
         // FIX: 非同期処理async/awaitを使った方がよさそう
         // 入れ替え
-        System.Action swap = () =>
+        callback += () =>
         {
             var temp = panelControllers[targetIndexY, targetIndexX];
             panelControllers[targetIndexY, targetIndexX] = panelControllers[indexY, indexX];
             panelControllers[indexY, indexX] = temp;
         };
+        callback += () => PanelMoved?.Invoke();
 
         // 移動の実行
-        panelControllers[indexY, indexX]?.Move(way, swap);
+        panelControllers[indexY, indexX]?.Move(way, callback);
         return true;
     }
 
