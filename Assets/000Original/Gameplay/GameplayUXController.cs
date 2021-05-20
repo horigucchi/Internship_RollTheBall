@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameplayUXController : MonoBehaviour
 {
     [SerializeField]
-    private UIControllerBese ClearUI;
+    private UIControllerBase ClearUI;
 
     public void PlayClear(System.Action callback = null)
     {
