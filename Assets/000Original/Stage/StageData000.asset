@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a581fff8b08885a4ab28e77d90998f83, type: 3}
   m_Name: StageData000
   m_EditorClassIdentifier: 
-  <TextureTable>k__BackingField: {fileID: 11400000, guid: 24602b0b3c9748e4fa5e0b5406153655, type: 2}
+  <SkinData>k__BackingField:
+    <TextureTable>k__BackingField: {fileID: 11400000, guid: 24602b0b3c9748e4fa5e0b5406153655, type: 2}
+    <LockedColor>k__BackingField: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   <PanelDataTable>k__BackingField:
   - x: 0
     y: 0
