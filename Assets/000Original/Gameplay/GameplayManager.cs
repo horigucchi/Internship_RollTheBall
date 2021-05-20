@@ -112,6 +112,6 @@ public class GameplayManager : MonoBehaviour
     public void ReturnStageSelection()
     {
         // FIX: 直代入やめる
-        SceneSwitcher.Instance.SwitchScene("StageSelection");
+        SceneSwitcher.Instance.SwitchScene("StageSelectionScene");
     }
 }
