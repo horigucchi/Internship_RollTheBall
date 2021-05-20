@@ -77,4 +77,16 @@ public class GameplayManager : MonoBehaviour
     {
         StageController.SwipePanel(position, way);
     }
+
+    public void RetryStage()
+    {
+        // FIX: 直代入やめる
+        SceneSwitcher.Instance.SwitchScene("GameScene");
+    }
+
+    public void ReturnTitle()
+    {
+        // FIX: 直代入やめる
+        SceneSwitcher.Instance.SwitchScene("TitleScene");
+    }
 }
