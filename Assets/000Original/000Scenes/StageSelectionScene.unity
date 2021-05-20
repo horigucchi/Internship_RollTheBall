@@ -804,7 +804,7 @@ PrefabInstance:
     - target: {fileID: 5942236934761356969, guid: f4c45087e77c77a4bb7888d292cb5146, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: d7db0213b949c5f4b90e6b5aeb120f93, type: 2}
+      objectReference: {fileID: 11400000, guid: aadeea58d6df7a342baa9e28956ce6fb, type: 2}
     - target: {fileID: 5942236934761356969, guid: f4c45087e77c77a4bb7888d292cb5146, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: StageDataObject, Assembly-CSharp
