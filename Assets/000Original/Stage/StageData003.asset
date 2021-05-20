@@ -18,7 +18,7 @@ MonoBehaviour:
   <PanelDataTable>k__BackingField:
   - x: 0
     y: 0
-    Way: 5
+    Way: 9
     IsHavingBall: 0
     CanMove: 1
     IsEndPoint: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
     Way: 10
     IsHavingBall: 0
     CanMove: 0
-    IsEndPoint: 1
+    IsEndPoint: 0
   - x: 1
     y: 1
     Way: 0
