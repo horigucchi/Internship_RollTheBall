@@ -1136,7 +1136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7255bb3b68630947aa5d63e418a57ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageDataObject: {fileID: 11400000, guid: 7a0fff8cb9915f64e98c6114fd6d84c8, type: 2}
+  stageDataObject: {fileID: 11400000, guid: d7db0213b949c5f4b90e6b5aeb120f93, type: 2}
 --- !u!4 &1596087917
 Transform:
   m_ObjectHideFlags: 0
