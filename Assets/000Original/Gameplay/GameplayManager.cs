@@ -16,6 +16,8 @@ public class GameplayManager : MonoBehaviour
 
     public BallGenerator BallGenerator { get; private set; }
 
+    public CommandStack SwipingStack { get; private set; }
+
     public GameplayUXController UXController { get; private set; }
 
     public bool CanSwipePanel { get; private set; }
@@ -30,8 +32,10 @@ public class GameplayManager : MonoBehaviour
     {
         PlayerController = FindObjectOfType<PlayerController>();
         StageController = FindObjectOfType<StageController>();
-        BallGenerator = FindObjectOfType<BallGenerator>();
         PanelGenerator = FindObjectOfType<PanelGenerator>();
+        BallGenerator = FindObjectOfType<BallGenerator>();
+
+        SwipingStack = FindObjectOfType<CommandStack>();
 
         UXController = FindObjectOfType<GameplayUXController>();
     }
@@ -82,6 +86,12 @@ public class GameplayManager : MonoBehaviour
     {
         if (!CanSwipePanel) return;
         StageController.SwipePanel(position, way);
+    }
+
+    public void UndoSwiping()
+    {
+        if (!CanSwipePanel) return;
+        SwipingStack.Undo();
     }
 
     public void RetryStage()

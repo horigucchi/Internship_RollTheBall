@@ -13,13 +13,26 @@ public class StageController : MonoBehaviour
     /// </summary>
     public const int HEIGHT = 4;
 
+
+    public event System.Action PanelMoved = null;
+
+    public CommandStack SwipingStack { get; private set; }
+
+
     [SerializeField]
     private GameObject[] panels = new GameObject[WIDTH * HEIGHT];
 
     // 管理するステージ上のパネルコントローラー
     private PanelController[,] panelControllers = new PanelController[HEIGHT, WIDTH];
 
-    public event System.Action PanelMoved = null;
+
+
+    private void Awake()
+    {
+        attachComponent();
+        //initializePanelObjects();
+    }
+
 
     // パネルコントローラーの初期化
     private void initializePanelObjects()
@@ -35,17 +48,40 @@ public class StageController : MonoBehaviour
         }
     }
 
+    private void attachComponent()
+    {
+        SwipingStack = FindObjectOfType<CommandStack>();
+    }
+
+    private void swapPanel(Vector2Int a, Vector2Int b)
+    {
+        var temp = panelControllers[b.y, b.x];
+        panelControllers[b.y, b.x] = panelControllers[a.y, a.x];
+        panelControllers[a.y, a.x] = temp;
+    }
+
+    private void stackSwipingCommand(Vector2Int startIndex, Vector2Int endIndex)
+    {
+        System.Action undoing = () =>
+        {
+            swapPanel(startIndex, endIndex);
+            GetPanelController(startIndex.x, startIndex.y).SetPosition(startIndex);
+        };
+        System.Action redoing = () =>
+        {
+            GetPanelController(startIndex.x, startIndex.y).SetPosition(endIndex);
+            swapPanel(startIndex, endIndex);
+        };
+        var command = new SwipingCommand(undoing, redoing);
+        SwipingStack.Add(command);
+    }
+
     public void SetStage(List<PanelController> list)
     {
         foreach (var item in list)
         {
             panelControllers[item.Data.y, item.Data.x] = item;
         }
-    }
-
-    private void Awake()
-    {
-        //initializePanelObjects();
     }
 
     // 枠の範囲外か
@@ -141,12 +177,10 @@ public class StageController : MonoBehaviour
 
         // FIX: 非同期処理async/awaitを使った方がよさそう
         // 入れ替え
-        callback += () =>
-        {
-            var temp = panelControllers[targetIndexY, targetIndexX];
-            panelControllers[targetIndexY, targetIndexX] = panelControllers[indexY, indexX];
-            panelControllers[indexY, indexX] = temp;
-        };
+        Vector2Int startIndex = new Vector2Int(indexX, indexY);
+        Vector2Int endIndex = new Vector2Int(targetIndexX, targetIndexY);
+        callback += () => swapPanel(startIndex, endIndex);
+        callback += () => stackSwipingCommand(startIndex, endIndex);
         callback += () => PanelMoved?.Invoke();
 
         // 移動の実行

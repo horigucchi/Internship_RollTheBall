@@ -31,16 +31,19 @@ public class PanelController : MonoBehaviour
         PanelObject = GetComponent<PanelObject>();
     }
 
+    public void SetPosition(Vector2Int index)
+    {
+        Vector3 position = Vector3.zero;
+        position.x = index.x - (StageController.WIDTH - 1) / 2f;
+        position.y = -index.y + (StageController.HEIGHT - 1) / 2f;
+        transform.position = position;
+    }
+
     public void SetParameter(PanelData data, PanelTextureTable textureTable)
     {
         Data = data;
         this.textureTable = textureTable;
-        {
-            Vector3 position = Vector3.zero;
-            position.x = data.x - (StageController.WIDTH - 1) / 2f;
-            position.y = -data.y + (StageController.HEIGHT - 1) / 2f;
-            transform.position = position;
-        }
+        SetPosition(new Vector2Int(data.x, data.y));
         initialize();
     }
 
