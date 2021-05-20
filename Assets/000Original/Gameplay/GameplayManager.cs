@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameplayManager : SingletonMonoBehaviour<GameplayManager>
+public class GameplayManager : MonoBehaviour
 {
     /// <summary>
     /// 繋がった時
@@ -34,10 +34,8 @@ public class GameplayManager : SingletonMonoBehaviour<GameplayManager>
         UXController = FindObjectOfType<GameplayUXController>();
     }
 
-    protected override void Awake()
-    {
-        base.Awake();
-
+    private void Awake()
+    { 
         attachComponent();
         routeSearcher = new RouteSearcher(StageController);
     }
