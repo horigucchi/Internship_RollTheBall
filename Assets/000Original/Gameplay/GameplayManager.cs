@@ -18,6 +18,8 @@ public class GameplayManager : MonoBehaviour
 
     public GameplayUXController UXController { get; private set; }
 
+    public bool CanSwipePanel { get; private set; }
+
 
     [SerializeField]
     private StageDataObject stageDataObject;
@@ -45,6 +47,8 @@ public class GameplayManager : MonoBehaviour
         List<PanelController> list = PanelGenerator.Generate(stageDataObject);
         StageController.SetStage(list);
 
+        CanSwipePanel = true;
+
 
         PlayerController.Swiped += onSwiped;
         StageController.PanelMoved += () =>
@@ -52,6 +56,7 @@ public class GameplayManager : MonoBehaviour
             var startPoint = StageController.GetStartPoint();
             if (routeSearcher.IsConnecting(startPoint, out List<WayPattern> route))
             {
+                CanSwipePanel = false;
                 Connected?.Invoke(startPoint, route);
             }
         };
@@ -75,6 +80,7 @@ public class GameplayManager : MonoBehaviour
 
     private void onSwiped(Vector3 position, WayPattern way)
     {
+        if (!CanSwipePanel) return;
         StageController.SwipePanel(position, way);
     }
 
