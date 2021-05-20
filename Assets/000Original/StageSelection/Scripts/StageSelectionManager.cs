@@ -9,4 +9,9 @@ public class StageSelectionManager : MonoBehaviour
         GameInstance.Instance.StageData = stageData;
         SceneSwitcher.Instance.SwitchScene("GameScene");
     }
+
+    public void ReturnTitle()
+    {
+        SceneSwitcher.Instance.SwitchScene("TitleScene");
+    }
 }

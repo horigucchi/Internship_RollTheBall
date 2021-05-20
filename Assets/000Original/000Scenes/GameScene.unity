@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2765103147071888875, guid: 382a06d8df7f9a3468e746228c99a43d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReturnTitle
+      value: ReturnStageSelection
       objectReference: {fileID: 0}
     - target: {fileID: 2765103147071888875, guid: 382a06d8df7f9a3468e746228c99a43d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
