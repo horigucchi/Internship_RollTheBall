@@ -11,9 +11,22 @@ public class PanelObject : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
+    /// <summary>
+    /// 画像を変更
+    /// </summary>
+    /// <param name="sprite"></param>
     public void SetSprite(Sprite sprite)
     {
         spriteRenderer.sprite = sprite;
+    }
+
+    /// <summary>
+    /// 画像の色を変更
+    /// </summary>
+    /// <param name="color"></param>
+    public void SetColor(Color color)
+    {
+        spriteRenderer.color = color;
     }
 
     /// <summary>

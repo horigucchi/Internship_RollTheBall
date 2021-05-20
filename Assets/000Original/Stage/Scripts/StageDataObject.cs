@@ -6,10 +6,7 @@ using UnityEngine;
 public class StageDataObject : ScriptableObject
 {
     [field: SerializeField]
-    public PanelTextureTable TextureTable { get; private set; }
-
-    //[field: SerializeField]
-    //public TextAsset StageTextFile { get; private set; }
+    public PanelSkinData SkinData { get; private set; }
 
     [field: SerializeField]
     public List<PanelData> PanelDataTable { get; private set; }

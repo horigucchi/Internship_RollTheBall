@@ -20,7 +20,8 @@ public class PanelController : MonoBehaviour
     public bool CanMove { get => Data.CanMove; }
 
     [SerializeField]
-    PanelTextureTable textureTable;
+    private PanelTextureTable textureTable;
+    private Color lockedColor = new Color(0.9f, 0.9f, 0.9f);
 
     // 移動中であるか
     private bool isMoving = false;
@@ -39,10 +40,11 @@ public class PanelController : MonoBehaviour
         transform.position = position;
     }
 
-    public void SetParameter(PanelData data, PanelTextureTable textureTable)
+    public void SetParameter(PanelData data, PanelSkinData skinData)
     {
         Data = data;
-        this.textureTable = textureTable;
+        textureTable = skinData.TextureTable;
+        lockedColor = skinData.LockedColor;
         SetPosition(new Vector2Int(data.x, data.y));
         initialize();
     }
@@ -56,6 +58,7 @@ public class PanelController : MonoBehaviour
     {
         Sprite sprite = textureTable.GetSprite(WayPattern);
         PanelObject.SetSprite(sprite);
+        if (!CanMove) PanelObject.SetColor(lockedColor);
     }
 
     /// <summary>

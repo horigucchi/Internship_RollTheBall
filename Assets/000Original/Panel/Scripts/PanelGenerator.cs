@@ -18,7 +18,7 @@ public class PanelGenerator : MonoBehaviour
         foreach (var item in data.PanelDataTable)
         {
             var obj = GetClone();
-            obj.SetParameter(item, data.TextureTable);
+            obj.SetParameter(item, data.SkinData);
             list.Add(obj);
         }
         return list;
