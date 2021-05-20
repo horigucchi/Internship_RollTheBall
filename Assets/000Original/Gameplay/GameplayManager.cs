@@ -24,7 +24,7 @@ public class GameplayManager : MonoBehaviour
 
 
     [SerializeField]
-    private StageDataObject stageDataObject;
+    private StageDataObject defaultStageData;
 
     private RouteSearcher routeSearcher;
 
@@ -46,13 +46,17 @@ public class GameplayManager : MonoBehaviour
         routeSearcher = new RouteSearcher(StageController);
     }
 
+    private void initializeStage()
+    {
+        List<PanelController> list = PanelGenerator.Generate(GameInstance.Instance.StageData ?? defaultStageData);
+        StageController.SetStage(list);
+    }
+
     private void Start()
     {
-        List<PanelController> list = PanelGenerator.Generate(stageDataObject);
-        StageController.SetStage(list);
+        initializeStage();
 
         CanSwipePanel = true;
-
 
         PlayerController.Swiped += onSwiped;
         StageController.PanelMoved += () =>
@@ -104,5 +108,10 @@ public class GameplayManager : MonoBehaviour
     {
         // FIX: 直代入やめる
         SceneSwitcher.Instance.SwitchScene("TitleScene");
+    }
+    public void ReturnStageSelection()
+    {
+        // FIX: 直代入やめる
+        SceneSwitcher.Instance.SwitchScene("StageSelection");
     }
 }

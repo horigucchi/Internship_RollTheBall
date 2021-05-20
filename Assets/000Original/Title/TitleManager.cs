@@ -8,7 +8,7 @@ public class TitleManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            SceneSwitcher.Instance.SwitchScene("GameScene");
+            SceneSwitcher.Instance.SwitchScene("StageSelectionScene");
         }
     }
 }
