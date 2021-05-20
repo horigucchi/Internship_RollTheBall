@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a581fff8b08885a4ab28e77d90998f83, type: 3}
+  m_Name: StageData001
+  m_EditorClassIdentifier: 
+  <TextureTable>k__BackingField: {fileID: 11400000, guid: 24602b0b3c9748e4fa5e0b5406153655, type: 2}
+  <PanelDataTable>k__BackingField:
+  - x: 0
+    y: 0
+    Way: 1
+    IsHavingBall: 1
+    CanMove: 0
+    IsEndPoint: 0
+  - x: 1
+    y: 0
+    Way: 5
+    IsHavingBall: 0
+    CanMove: 1
+    IsEndPoint: 0
+  - x: 2
+    y: 0
+    Way: 6
+    IsHavingBall: 0
+    CanMove: 1
+    IsEndPoint: 0
+  - x: 2
+    y: 1
+    Way: 12
+    IsHavingBall: 0
+    CanMove: 1
+    IsEndPoint: 0
+  - x: 0
+    y: 1
+    Way: 3
+    IsHavingBall: 0
+    CanMove: 1
+    IsEndPoint: 0
+  - x: 0
+    y: 2
+    Way: 10
+    IsHavingBall: 0
+    CanMove: 1
+    IsEndPoint: 0
+  - x: 1
+    y: 3
+    Way: 9
+    IsHavingBall: 0
+    CanMove: 1
+    IsEndPoint: 0
+  - x: 2
+    y: 3
+    Way: 5
+    IsHavingBall: 0
+    CanMove: 1
+    IsEndPoint: 0
+  - x: 3
+    y: 3
+    Way: 4
+    IsHavingBall: 0
+    CanMove: 0
+    IsEndPoint: 1
